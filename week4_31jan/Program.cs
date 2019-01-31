@@ -10,7 +10,8 @@ namespace week4_31jan
     {
         static void Main(string[] args)
         {
-
+            Countryside Ontario = new Countryside();
+            Ontario.run();
         }
         class Village
         {
@@ -19,6 +20,7 @@ namespace week4_31jan
             public Village previousvillage;
             public string Villagename;
             public bool isAstrildeHere = false;
+
             public Village()
             { Village.numberofvillages++; }
         }
@@ -28,11 +30,23 @@ namespace week4_31jan
 
             public Village Toronto;
             public Village Ajax;
+            public Village Head;
+            public Village Tail;
+            public Village Temp;
+
+            public void run()
+            {
+                this.MapInitializer();
+                this.LookForAstrilde();
+            }
             public void MapInitializer()
             {
                 Maple = new Village();
                 Maple.Villagename = "Maple";
                 Maple.previousvillage = null;
+                Maple.nextvillage = Toronto;
+                Maple.isAstrildeHere = true;
+
                 Toronto = new Village();
                 Toronto.Villagename = "Toronto";
                 Toronto.previousvillage = null;
@@ -40,9 +54,23 @@ namespace week4_31jan
                 Ajax.Villagename = "Ajax";
                 Ajax.nextvillage = null;
                 Ajax.previousvillage = Toronto;
-                Ajax.isAstrildeHere = true;
+                // Ajax.isAstrildeHere = true;
 
 
+            }
+
+            public void LookForAstrilde()
+            {
+                Head = Maple;
+                if (Head.isAstrildeHere)
+                {
+                    Console.WriteLine("yeah astridle is in " + Head.Villagename);
+                }
+
+               // while (true)
+                {
+
+                }
             }
         }
     }
